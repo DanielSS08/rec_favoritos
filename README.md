@@ -6,7 +6,7 @@
 
 -- Rodar o comando no terminal:
 
-pip install flask
+    "pip install flask"
 
 - Ao executar o app.py, a seguinte mensagem será exibida no terminal:
 
