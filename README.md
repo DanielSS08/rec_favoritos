@@ -8,7 +8,7 @@
 
     pip install flask
 
-- Ao executar o app.py, a seguinte mensagem será exibida no terminal:
+- Ao executar o app.py, a mensagem abaixo será exibida no terminal. Isto indica que um servidor local está sendo executado: com o encereço http://127.0.0.1:5000.
 
 ![image](https://github.com/DanielSS08/rec_favoritos/assets/97844260/a22112d6-5cbb-4b08-9bde-4eaf9c302f3c)
 
