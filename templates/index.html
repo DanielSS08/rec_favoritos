@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Favoritos</title>
+    <style>
+        #instructions {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        #upload-area {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #file-name {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Recuperar Favoritos</h1>
+
+    <div id="instructions">
+        <p>Veja como recuperar seus favoritos perdidos (Windows):</p>
+        <ol>
+            <li>Copie <code>C:\Users\%username%\AppData\Local\Google\Chrome\User Data\Default</code> para o Explorador
+                de Arquivos.</li>
+            <li>Na barra de pesquisa, digite "Bookmarks"; você verá uma lista de arquivos chamados Bookmarks e/ou
+                Bookmarks.bak. (Observação: Se houver mais de um usuário usando o mesmo Chrome, os favoritos de outros
+                usuários também serão listados.)</li>
+            <li>Selecione todos os arquivos com o mouse e arraste-os para a área abaixo.</li>
+            <li>Faça o download de todos os arquivos HTML.</li>
+            <li>Abra cada arquivo HTML com o Chrome e identifique o arquivo HTML que contém seus favoritos. (Observação:
+                O arquivo maior é provavelmente o correto.)</li>
+            <li>No seu navegador Chrome, clique no ícone de menu do Chrome e vá para Favoritos > Gerenciador de
+                Favoritos.</li>
+            <li>Clique no ícone do menu ao lado da barra de pesquisa e clique em "Importar Favoritos".</li>
+            <li>Selecione o arquivo HTML que contém seus favoritos.</li>
+            <li>Seus favoritos devem agora ser importados de volta para o Chrome.</li>
+        </ol>
+
+
+    </div>
+
+    <div id="upload-area">
+        <p>Escolha o arquivo</p>
+        <form method="post" action="/" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".bak" required>
+            <br>
+            <button type="submit">Baixar</button>
+        </form>
+        <p id="file-name"></p>
+    </div>
+
+    {% if links %}
+    <h2>Links Gerados:</h2>
+    <ul>
+        {% for link in links %}
+        <li><a href="{{ link.url }}">{{ link.nome }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <script>
+        // Atualizar o nome do arquivo escolhido
+        document.querySelector('input[type="file"]').addEventListener('change', function () {
+            document.getElementById('file-name').textContent = this.files[0].name;
+        });
+    </script>
+</body>
+
+</html>
